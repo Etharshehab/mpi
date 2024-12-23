@@ -1,42 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:mpi/src/core/model/textfieldmodel.dart';
 
-class CustomTextField extends StatefulWidget {
-  final String label;
-  final IconData preifixicon;
-  final String hinttext;
-  final TextEditingController controller;
-  final bool? obscureText;
-  final String? Function(String?)? validator;
-  const CustomTextField(
-      {super.key,
-      required this.label,
-      required this.preifixicon,
-      required this.hinttext,
-      required this.controller,
-      this.validator,
-      this.obscureText});
+class CustomTextField extends StatelessWidget {
+  final TextFieldModel model;
+  const CustomTextField({super.key, required this.model});
 
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: widget.validator,
-        controller: widget.controller,
-        obscureText: widget.obscureText ?? false,
+        validator: model.validator,
+        controller: model.controller,
+        obscureText: model.obscureText,
         decoration: InputDecoration(
-            label: Text(widget.label),
-            hintText: widget.hinttext,
-            prefixIcon: Icon(widget.preifixicon),
+            label: Text(model.label),
+            hintText: model.hintText,
+            prefixIcon: Icon(model.prefixIcon),
             suffixIcon: InkWell(
               onTap: () {
-                widget.controller.clear();
+                model.controller.clear();
               },
               child: const Icon(Icons.clear),
             ),

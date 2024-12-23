@@ -12,7 +12,7 @@ class _CutomTextFieldState extends State<CutomTextField> {
   Widget build(BuildContext context) {
     return TextField(
         decoration: InputDecoration(
-            label: Text("الطول"),
+            label: const Text("الطول"),
             hintText: "برجاء ادخال الطول",
             border: border(color: Colors.black12, radius: 20),
             enabledBorder: border(color: Colors.grey, radius: 30),
